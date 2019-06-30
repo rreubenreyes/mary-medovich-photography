@@ -8,16 +8,16 @@ import SEO from '../components/seo';
 
 const MockPhotoComponent = ({ photo }) => {
     const {
- title, location, description, tags,
-} = photo;
+        title, location, description, tags,
+    } = photo;
 
     return (
         <div className="homepage__div--photo-container">
             <p>{title}</p>
             <p>
                 {location.latitude}
-{' '}
-{location.longitude}
+                {' '}
+                {location.longitude}
             </p>
             <p>{description.markdown}</p>
             <p>{tags.name}</p>
