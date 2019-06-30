@@ -4,7 +4,7 @@ const slug = require('slug');
 const createPages = async ({ graphql, actions }) => {
     const { createPage } = actions;
     const blogPostTemplate = require.resolve(
-        path.join(__dirname, './src/templates/blog-post.js')
+        path.join(__dirname, './src/templates/blog-post/index.js')
     );
     // Query for markdown nodes to use in creating pages.
     // You can query for whatever data you want to create pages for e.g.
@@ -14,15 +14,8 @@ const createPages = async ({ graphql, actions }) => {
         query loadPagesQuery {
             gcms {
                 blogPosts(orderBy: createdAt_DESC) {
+                    id
                     title
-                    content {
-                        markdown
-                    }
-                    createdAt
-                    updatedAt
-                }
-                tags {
-                    name
                 }
             }
         }
@@ -37,7 +30,7 @@ const createPages = async ({ graphql, actions }) => {
             path: slug(blogPost.title, { lower: true }),
             component: blogPostTemplate,
             context: {
-                ...blogPost,
+                id: blogPost.id,
             },
         });
     });
