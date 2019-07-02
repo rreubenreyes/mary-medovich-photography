@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Img from 'graphcms-image';
 
 const Photo = ({ photo }) => {
-    const { title, location, description, tags } = photo;
+    const { title, photograph, location, description, tags } = photo;
 
     return (
         <div className="photo-container">
             <h3 className="photo-container__h3--title">{title}</h3>
+            <Img image={photograph} />
             <span className="photo-container__span--location">
                 {location.latitude}
                 {location.longitude}
@@ -22,6 +24,11 @@ const Photo = ({ photo }) => {
 Photo.propTypes = {
     photo: PropTypes.shape({
         title: PropTypes.string.isRequired,
+        photograph: PropTypes.shape({
+            handle: PropTypes.string.isRequired,
+            width: PropTypes.number.isRequired,
+            height: PropTypes.number.isRequired,
+        }),
         location: PropTypes.shape({
             latitude: PropTypes.number.isRequired,
             longitude: PropTypes.number.isRequired,

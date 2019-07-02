@@ -19,6 +19,7 @@
     "gatsby-source-filesystem": "^2.1.0",
     "gatsby-source-graphql": "^2.1.0",
     "gatsby-transformer-sharp": "^2.2.0",
+    "graphcms-image": "^1.1.0-beta4",
     "node-sass": "^4.12.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",

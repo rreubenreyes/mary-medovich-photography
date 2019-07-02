@@ -37,6 +37,11 @@ export const allPhotosQuery = graphql`
         gcms {
             photos(orderBy: updatedAt_DESC) {
                 title
+                photograph {
+                    handle
+                    width
+                    height
+                }
                 location {
                     latitude
                     longitude
