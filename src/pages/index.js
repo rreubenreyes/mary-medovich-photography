@@ -5,41 +5,7 @@ import { Link, graphql } from 'gatsby';
 import Layout from '../components/layout';
 import Image from '../components/image';
 import SEO from '../components/seo';
-
-const MockPhotoComponent = ({ photo }) => {
-    const {
-        title, location, description, tags,
-    } = photo;
-
-    return (
-        <div className="homepage__div--photo-container">
-            <p>{title}</p>
-            <p>
-                {location.latitude}
-                {' '}
-                {location.longitude}
-            </p>
-            <p>{description.markdown}</p>
-            <p>{tags.name}</p>
-        </div>
-    );
-};
-
-MockPhotoComponent.propTypes = {
-    photo: PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        location: PropTypes.shape({
-            latitude: PropTypes.number.isRequired,
-            longitude: PropTypes.number.isRequired,
-        }),
-        description: PropTypes.shape({
-            markdown: PropTypes.string.isRequired,
-        }),
-        tags: PropTypes.shape({
-            name: PropTypes.string.isRequired,
-        }),
-    }).isRequired,
-};
+import Photo from '../components/photo';
 
 const IndexPage = ({ data }) => {
     const {
@@ -57,7 +23,7 @@ const IndexPage = ({ data }) => {
             </div>
             <div className="homepage__div--photos-container">
                 {photos.map(photo => (
-                    <MockPhotoComponent key={photo.id} photo={photo} />
+                    <Photo key={photo.id} photo={photo} />
                 ))}
             </div>
 

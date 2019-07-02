@@ -2,12 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const PostPreview = ({ blogPost }) => {
-    const { title, createdAt, updatedAt } = blogPost;
+    const { title, createdAt } = blogPost;
     return (
         <>
-            <p>{title}</p>
-            <p>{createdAt}</p>
-            <p>{updatedAt}</p>
+            <h4 className="post-preview--h4__title">{title}</h4>
+            <span className="post-preview--span__published">
+                Published on
+                {createdAt}
+            </span>
         </>
     );
 };
@@ -16,7 +18,6 @@ PostPreview.propTypes = {
     blogPost: PropTypes.shape({
         title: PropTypes.string.isRequired,
         createdAt: PropTypes.string.isRequired,
-        updatedAt: PropTypes.string.isRequired,
     }).isRequired,
 };
 
